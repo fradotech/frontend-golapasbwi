@@ -28,7 +28,7 @@ const DetailSurvey = (survey) => {
       sumSatisfaction += parseInt(answer.answer)
     })
 
-    setSatisfaction(parseInt(sumSatisfaction / 65 * 100))
+    setSatisfaction(parseInt(sumSatisfaction / 45 * 100))
     setOpen(true)
   }
 
