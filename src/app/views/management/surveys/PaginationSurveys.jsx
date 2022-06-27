@@ -84,10 +84,14 @@ const PaginationSurveys = () => {
         <TableHead>
           <TableRow>
             <TableCell>Nama</TableCell>
+            <TableCell>Alamat</TableCell>
+            <TableCell>Usia</TableCell>
+            <TableCell>Pekerjaan</TableCell>
+            <TableCell>Rekayasa</TableCell>
             <TableCell>Masukan</TableCell>
             <TableCell>Tanggal Survey</TableCell>
-            <TableCell>Persentase Kepuasan</TableCell>
-            <TableCell>Aksi</TableCell>
+            <TableCell>Kepuasan (%)</TableCell>
+            <TableCell>Detail Pertanyaan</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -101,12 +105,14 @@ const PaginationSurveys = () => {
           .map((survey, index) => (
             <TableRow key={index}>
               <TableCell align="left">{survey.name}</TableCell>
+              <TableCell align="left">{survey.address}</TableCell>
+              <TableCell align="left">{survey.age}</TableCell>
+              <TableCell align="left">{survey.job}</TableCell>
+              <TableCell align="left">{survey.disuruh}</TableCell>
               <TableCell align="left">{survey.suggestion}</TableCell>
               <TableCell align="left">{survey.createdAt.slice(0, 10)}</TableCell>
               <TableCell align="left">{survey.satisfaction} %</TableCell>
-              <TableCell align="left">
-                <DetailSurvey survey={survey} />
-              </TableCell>            
+              <TableCell align="left"><DetailSurvey survey={survey} /></TableCell>            
             </TableRow>
           ))}
         </TableBody>

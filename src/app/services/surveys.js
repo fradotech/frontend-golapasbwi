@@ -13,15 +13,17 @@ export const postSurveys = async (survey) => {
     parseInt(survey.answers6),
     parseInt(survey.answers7),
     parseInt(survey.answers8),
-    parseInt(survey.answers9),
-    parseInt(survey.answers10),
-    parseInt(survey.answers11),
-    parseInt(survey.answers12),
   ]
+
+  console.log(survey)
 
   const response = await axios.post(endpoint.surveys.root, {
     name: survey.name,
     suggestion: survey.suggestion,
+    address: survey.address,
+    age: survey.age,
+    job: survey.job,
+    disuruh: survey.disuruh,
     answers
   })
   
