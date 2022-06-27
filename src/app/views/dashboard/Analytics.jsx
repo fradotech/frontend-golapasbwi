@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
 // import RowCards from './shared/RowCards'
 import StatCards from './shared/StatCards'
-// import Campaigns from './shared/Campaigns'
-import { Grid } from '@mui/material'
+import Campaigns from './shared/Campaigns'
+import { Card, Grid, useTheme } from '@mui/material'
 // import StatCards2 from './shared/StatCards2'
-// import DoughnutChart from './shared/Doughnut'
-// import UpgradeCard from './shared/UpgradeCard'
+import DoughnutChart from './shared/Doughnut'
+import UpgradeCard from './shared/UpgradeCard'
 import { styled } from '@mui/system'
 // import TopSellingTable from './shared/TopSellingTable'
 
@@ -16,27 +16,27 @@ const ContentBox = styled('div')(({ theme }) => ({
   },
 }))
 
-// const Title = styled('span')(() => ({
-//   fontSize: '1rem',
-//   fontWeight: '500',
-//   textTransform: 'capitalize',
-// }))
+const Title = styled('span')(() => ({
+  fontSize: '1rem',
+  fontWeight: '500',
+  textTransform: 'capitalize',
+}))
 
-// const SubTitle = styled('span')(({ theme }) => ({
-//   fontSize: '0.875rem',
-//   color: theme.palette.text.secondary,
-// }))
+const SubTitle = styled('span')(({ theme }) => ({
+  fontSize: '0.875rem',
+  color: theme.palette.text.secondary,
+}))
 
-// const H4 = styled('h4')(({ theme }) => ({
-//   fontSize: '1rem',
-//   fontWeight: '500',
-//   marginBottom: '16px',
-//   textTransform: 'capitalize',
-//   color: theme.palette.text.secondary,
-// }))
+const H4 = styled('h4')(({ theme }) => ({
+  fontSize: '1rem',
+  fontWeight: '500',
+  marginBottom: '16px',
+  textTransform: 'capitalize',
+  color: theme.palette.text.secondary,
+}))
 
 const Analytics = () => {
-  // const { palette } = useTheme()
+  const { palette } = useTheme()
 
   return (
     <Fragment>
@@ -50,7 +50,7 @@ const Analytics = () => {
             <RowCards /> */}
           </Grid>
 
-          {/* <Grid item lg={4} md={4} sm={12} xs={12}>
+          <Grid item lg={4} md={4} sm={12} xs={12}>
             <Card sx={{ px: 3, py: 2, mb: 3 }}>
               <Title>Traffic Sources</Title>
               <SubTitle>Last 30 days</SubTitle>
@@ -63,9 +63,41 @@ const Analytics = () => {
                 ]}
               />
             </Card>
-            <UpgradeCard />
-            <Campaigns />
-          </Grid> */}
+            {/* <UpgradeCard />
+            <Campaigns /> */}
+          </Grid>
+          <Grid item lg={4} md={4} sm={12} xs={12}>
+            <Card sx={{ px: 3, py: 2, mb: 3 }}>
+              <Title>Traffic Sources</Title>
+              <SubTitle>Last 30 days</SubTitle>
+              <DoughnutChart
+                height="300px"
+                color={[
+                  palette.primary.dark,
+                  palette.primary.main,
+                  palette.primary.light,
+                ]}
+              />
+            </Card>
+            {/* <UpgradeCard />
+            <Campaigns /> */}
+          </Grid>
+          <Grid item lg={4} md={4} sm={12} xs={12}>
+            <Card sx={{ px: 3, py: 2, mb: 3 }}>
+              <Title>Traffic Sources</Title>
+              <SubTitle>Last 30 days</SubTitle>
+              <DoughnutChart
+                height="300px"
+                color={[
+                  palette.primary.dark,
+                  palette.primary.main,
+                  palette.primary.light,
+                ]}
+              />
+            </Card>
+            {/* <UpgradeCard />
+            <Campaigns /> */}
+          </Grid>
         </Grid>
       </ContentBox>
     </Fragment>
