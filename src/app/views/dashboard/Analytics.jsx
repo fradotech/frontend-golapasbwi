@@ -1,12 +1,13 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 // import RowCards from './shared/RowCards'
 import StatCards from './shared/StatCards'
-import Campaigns from './shared/Campaigns'
+// import Campaigns from './shared/Campaigns'
 import { Card, Grid, useTheme } from '@mui/material'
 // import StatCards2 from './shared/StatCards2'
-import DoughnutChart from './shared/Doughnut'
-import UpgradeCard from './shared/UpgradeCard'
 import { styled } from '@mui/system'
+import AgeChart from './shared/AgeChart'
+import JobChart from './shared/JobChart'
+import { getStatistics } from 'app/services/surveys'
 // import TopSellingTable from './shared/TopSellingTable'
 
 const ContentBox = styled('div')(({ theme }) => ({
@@ -22,21 +23,26 @@ const Title = styled('span')(() => ({
   textTransform: 'capitalize',
 }))
 
-const SubTitle = styled('span')(({ theme }) => ({
-  fontSize: '0.875rem',
-  color: theme.palette.text.secondary,
-}))
-
-const H4 = styled('h4')(({ theme }) => ({
-  fontSize: '1rem',
-  fontWeight: '500',
-  marginBottom: '16px',
-  textTransform: 'capitalize',
-  color: theme.palette.text.secondary,
-}))
-
 const Analytics = () => {
   const { palette } = useTheme()
+
+  const [statistic, setStatistic] = useState({
+    age: [],
+    job: []
+  })
+
+  useEffect(() => {
+    let mounted = true
+
+    getStatistics()
+      .then(data => {
+        if (mounted) {
+          setStatistic(data)
+        }
+      })
+
+    return () => mounted = false
+  }, [])
 
   return (
     <Fragment>
@@ -52,52 +58,35 @@ const Analytics = () => {
 
           <Grid item lg={4} md={4} sm={12} xs={12}>
             <Card sx={{ px: 3, py: 2, mb: 3 }}>
-              <Title>Traffic Sources</Title>
-              <SubTitle>Last 30 days</SubTitle>
-              <DoughnutChart
+              <Title>Usia</Title>
+              <AgeChart
                 height="300px"
                 color={[
                   palette.primary.dark,
                   palette.primary.main,
                   palette.primary.light,
                 ]}
+                data={statistic}
               />
             </Card>
-            {/* <UpgradeCard />
-            <Campaigns /> */}
           </Grid>
           <Grid item lg={4} md={4} sm={12} xs={12}>
             <Card sx={{ px: 3, py: 2, mb: 3 }}>
-              <Title>Traffic Sources</Title>
-              <SubTitle>Last 30 days</SubTitle>
-              <DoughnutChart
+              <Title>Pekerjaan</Title>
+              <JobChart
                 height="300px"
                 color={[
                   palette.primary.dark,
                   palette.primary.main,
                   palette.primary.light,
                 ]}
+                data={statistic}
               />
             </Card>
-            {/* <UpgradeCard />
-            <Campaigns /> */}
           </Grid>
-          <Grid item lg={4} md={4} sm={12} xs={12}>
-            <Card sx={{ px: 3, py: 2, mb: 3 }}>
-              <Title>Traffic Sources</Title>
-              <SubTitle>Last 30 days</SubTitle>
-              <DoughnutChart
-                height="300px"
-                color={[
-                  palette.primary.dark,
-                  palette.primary.main,
-                  palette.primary.light,
-                ]}
-              />
-            </Card>
-            {/* <UpgradeCard />
-            <Campaigns /> */}
-          </Grid>
+          {/* <Grid item lg={4} md={4} sm={12} xs={12}>
+            <Campaigns />
+          </Grid> */}
         </Grid>
       </ContentBox>
     </Fragment>

@@ -46,3 +46,9 @@ export const getQuestions = async (id) => {
 
   return response.data.data
 }
+
+export const getStatistics = async () => {
+  const response = await axios.get(endpoint.surveys.statistics)
+
+  return response.data.data
+}

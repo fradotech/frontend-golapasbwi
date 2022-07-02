@@ -8,6 +8,7 @@ const endpoint = {
     surveys: {
         root: baseUrl + '/surveys',
         questions: baseUrl + '/surveys/questions',
+        statistics: baseUrl + '/surveys/statistics',
     }
 }
 

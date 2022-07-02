@@ -8,7 +8,8 @@ import {
   TextField,
   Container,
   Typography,
-  Autocomplete
+  Autocomplete,
+  CircularProgress
 } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { SimpleCard } from 'app/components'
@@ -24,8 +25,14 @@ const IMG = styled('img')(() => ({
   width: '100%',
 }))
 
+const StyledProgress = styled(CircularProgress)(() => ({
+  position: 'absolute',
+  top: '6px',
+  left: '25px',
+}))
+
 const ages = [
-  { label: '20' },
+  { label: '20-' },
   { label: '21-40' },
   { label: '41-60' },
   { label: '60+' },
@@ -41,6 +48,7 @@ const jobs = [
 ]
 
 const CreateSurveys = () => {
+  const [loading, setLoading] = useState(false)
   const [questions, setQuestions] = useState([])
   const [message, setMessage] = useState('')
   const [age, setAge] = useState('')
@@ -75,6 +83,7 @@ const CreateSurveys = () => {
   }
 
   const handleSubmit = async () => {
+    setLoading(true)
     try {
       survey.age = age.label
       survey.job = job.label
@@ -84,6 +93,7 @@ const CreateSurveys = () => {
     } catch (e) {
       console.log(e)
       setMessage(e.message)
+      setLoading(false)
     }
   }
 
@@ -172,9 +182,16 @@ const CreateSurveys = () => {
             color="error"
             variant="contained"
             type="submit"
+            disabled={loading}
           >
             <Typography>KIRIM</Typography>
           </Button>
+          {loading && (
+            <StyledProgress
+              size={24}
+              className="buttonProgress"
+            />
+          )}
         </FormControl>
       </ValidatorForm>
     </Container>
