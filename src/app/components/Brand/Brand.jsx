@@ -1,5 +1,4 @@
 import React from 'react'
-import { MatxLogo } from 'app/components'
 import { Span } from '../../components/Typography'
 import { styled, Box } from '@mui/system'
 import useSettings from 'app/hooks/useSettings'
@@ -17,6 +16,10 @@ const StyledSpan = styled(Span)(({ theme, mode }) => ({
   display: mode === 'compact' ? 'none' : 'block',
 }))
 
+const IMG = styled('img')(() => ({
+  width: '50%',
+}))
+
 const Brand = ({ children }) => {
   const { settings } = useSettings()
   const leftSidebar = settings.layout1Settings.leftSidebar
@@ -25,7 +28,10 @@ const Brand = ({ children }) => {
   return (
     <BrandRoot>
       <Box display="flex" alignItems="center">
-        <MatxLogo />
+        <IMG
+          src="/assets/images/illustrations/logo.png"
+          alt=""
+        />
         <StyledSpan mode={mode} className="sidenavHoverShow">
           Golapasbwi
         </StyledSpan>

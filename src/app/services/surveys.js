@@ -15,7 +15,7 @@ export const postSurveys = async (survey) => {
     parseInt(survey.answers8),
   ]
 
-  console.log(survey)
+  if(survey.age === '12-20') survey.age = '20-'
 
   const response = await axios.post(endpoint.surveys.root, {
     name: survey.name,
@@ -32,6 +32,11 @@ export const postSurveys = async (survey) => {
 
 export const getSurveys = async () => {
   const response = await axios.get(endpoint.surveys.root)
+
+  response.data.data.map((data) => {
+    if(data.age === '20-') data.age = '12-20'
+    return data
+  })
 
   return response.data.data
 }

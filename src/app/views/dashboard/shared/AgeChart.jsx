@@ -48,7 +48,7 @@ const AgeChart = ({ height, color = [], data }) => {
         name: 'Traffic Rate',
         type: 'pie',
         radius: ['45%', '72.55%'],
-        center: ['50%', '50%'],
+        center: ['50%', '40%'],
         avoidLabelOverlap: false,
         hoverOffset: 5,
         stillShowZeroSum: false,
@@ -81,7 +81,7 @@ const AgeChart = ({ height, color = [], data }) => {
         data: [
           {
             value: data.age[0],
-            name: '20-',
+            name: '12-20',
           },
           {
             value: data.age[1],

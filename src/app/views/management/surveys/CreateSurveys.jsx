@@ -32,7 +32,7 @@ const StyledProgress = styled(CircularProgress)(() => ({
 }))
 
 const ages = [
-  { label: '20-' },
+  { label: '12-20' },
   { label: '21-40' },
   { label: '41-60' },
   { label: '60+' },

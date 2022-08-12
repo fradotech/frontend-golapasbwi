@@ -53,8 +53,8 @@ const JwtLogin = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [userInfo, setUserInfo] = useState({
-    email: 'rizam.admin@fradotech.id',
-    password: 'fradoo',
+    email: '',
+    password: '',
   })
   const [message, setMessage] = useState('')
   const { login } = useAuth()
@@ -80,14 +80,27 @@ const JwtLogin = () => {
     }
   }
 
+  const StyledSpan = styled(Span)(({ theme, mode }) => ({
+    fontSize: 18,
+    marginLeft: '.5rem',
+    display: mode === 'compact' ? 'none' : 'block',
+  }))
+
   return (
     <JWTRoot>
       <Card className="card">
-        <Grid container>
+        <Grid container padding={3}>
           <Grid item lg={5} md={5} sm={5} xs={12}>
-            <JustifyBox p={4} height="100%">
+            <StyledSpan>
+              <center>
+                <strong>
+                  LAPAS BANYUWANGI
+                </strong>
+              </center>
+            </StyledSpan>
+            <JustifyBox p={2} height="100%">
               <IMG
-                src="/assets/images/illustrations/dreamer.svg"
+                src="/assets/images/illustrations/dreamer.jpg"
                 alt=""
               />
             </JustifyBox>
